@@ -202,10 +202,6 @@ class PreferredLAFTree(
         return bob.build()
     }
 
-    var filterText: String?
-        get() = myFilter.filter
-        set(value) { myFilter.filter = value }
-
     private inner class MyFilterComponent : FilterComponent("THEME_FILTER_HISTORY", HISTORY_LENGTH) {
         private val myExpansionMonitor = TreeExpansionMonitor.install(myTree)
 

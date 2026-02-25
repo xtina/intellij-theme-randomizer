@@ -2,14 +2,13 @@
 
 package com.github.xtina.intellijthemerandomizer.settings
 
+import com.github.xtina.intellijthemerandomizer.MyBundle
 import com.intellij.openapi.options.SearchableConfigurable
 import com.intellij.openapi.project.DumbAware
 import com.intellij.util.ui.JBUI
-import com.github.xtina.intellijthemerandomizer.MyBundle
 import java.awt.BorderLayout
 import java.awt.GridBagConstraints
 import java.awt.GridBagLayout
-import java.util.stream.Collectors
 import javax.swing.*
 
 class AppSettingsConfigurable : SearchableConfigurable, DumbAware {
