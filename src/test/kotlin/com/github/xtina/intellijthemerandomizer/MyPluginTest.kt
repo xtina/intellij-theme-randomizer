@@ -2,14 +2,21 @@ package com.github.xtina.intellijthemerandomizer
 
 import com.intellij.ide.highlighter.XmlFileType
 import com.intellij.openapi.components.service
+import com.intellij.openapi.vfs.newvfs.impl.VfsRootAccess
 import com.intellij.psi.xml.XmlFile
 import com.intellij.testFramework.TestDataPath
 import com.intellij.testFramework.fixtures.BasePlatformTestCase
 import com.intellij.util.PsiErrorElementUtil
 import com.github.xtina.intellijthemerandomizer.services.MyProjectService
+import java.io.File
 
 @TestDataPath("\$CONTENT_ROOT/src/test/testData")
 class MyPluginTest : BasePlatformTestCase() {
+
+    override fun setUp() {
+        super.setUp()
+        VfsRootAccess.allowRootAccess(testRootDisposable, testDataPath)
+    }
 
     fun testXMLFile() {
         val psiFile = myFixture.configureByText(XmlFileType.INSTANCE, "<foo>bar</foo>")
@@ -35,5 +42,5 @@ class MyPluginTest : BasePlatformTestCase() {
         assertNotSame(projectService.getRandomNumber(), projectService.getRandomNumber())
     }
 
-    override fun getTestDataPath() = "src/test/testData/rename"
+    override fun getTestDataPath(): String = File("src/test/testData/rename").absolutePath
 }
