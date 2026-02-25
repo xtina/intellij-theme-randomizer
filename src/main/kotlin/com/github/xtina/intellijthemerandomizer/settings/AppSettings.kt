@@ -1,35 +1,40 @@
 package com.github.xtina.intellijthemerandomizer.settings
 
-import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.components.PersistentStateComponent
 import com.intellij.openapi.components.Service
 import com.intellij.openapi.components.State
 import com.intellij.openapi.components.Storage
+import com.intellij.openapi.components.service
+import com.intellij.util.xmlb.XmlSerializerUtil
 
 @Service(Service.Level.APP)
 @State(
-    name = "com.github.xtina.intellijthemerandomizer.settings.AppSettings",
+    name = "Theme-Randomizer-Config",
     storages = [Storage("ThemeRandomizerSettings.xml")]
 )
-class AppSettings : PersistentStateComponent<AppSettings.State> {
+class AppSettings : PersistentStateComponent<AppSettings> {
+    var interval: String = ChangeIntervals.DAY.name
+    var isChangeTheme: Boolean = true
+    var isRandomOrder: Boolean = true
+    var isThemeTransition: Boolean = false
+    var pluginMode: String = PluginMode.TIMED.displayName
+    var selectedThemes: String = ""
+    var blacklistedThemes: String = ""
+    var changeOnSystemSwitches: Int = 1
+    var isLocalSync: Boolean = false
+    var isTimedMatchOS: Boolean = false
 
-    class State {
-        var randomizeOnStartup: Boolean = false
-        var randomizeOnProjectOpen: Boolean = false
-        var excludeDarkThemes: Boolean = false
-        var excludeLightThemes: Boolean = false
-    }
+    override fun getState(): AppSettings = this
 
-    private var state = State()
-
-    override fun getState(): State = state
-
-    override fun loadState(state: State) {
-        this.state = state
+    override fun loadState(state: AppSettings) {
+        XmlSerializerUtil.copyBean(state, this)
     }
 
     companion object {
-        fun getInstance(): AppSettings =
-            ApplicationManager.getApplication().getService(AppSettings::class.java)
+        const val DEFAULT_DELIMITER = ","
+
+        @JvmStatic
+        val instance: AppSettings
+            get() = service()
     }
 }

@@ -12,11 +12,13 @@
         <toolWindow factoryClass="com.github.xtina.intellijthemerandomizer.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
         <postStartupActivity implementation="com.github.xtina.intellijthemerandomizer.startup.MyProjectActivity" />
         <applicationConfigurable
-                parentId="tools"
+                id="com.github.xtina.intellijthemerandomizer.settings"
+                displayName="Theme Randomizer"
                 instance="com.github.xtina.intellijthemerandomizer.settings.AppSettingsConfigurable"
-                id="com.github.xtina.intellijthemerandomizer.settings.AppSettingsConfigurable"
-                displayName="Theme Randomizer"/>
+                groupId="appearance"/>
         <applicationService
                 serviceImplementation="com.github.xtina.intellijthemerandomizer.settings.AppSettings"/>
+        <applicationService
+                serviceImplementation="com.github.xtina.intellijthemerandomizer.settings.ThemeGatekeeper"/>
     </extensions>
 </idea-plugin>
