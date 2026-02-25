@@ -11,5 +11,12 @@
     <extensions defaultExtensionNs="com.intellij">
         <toolWindow factoryClass="com.github.xtina.intellijthemerandomizer.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
         <postStartupActivity implementation="com.github.xtina.intellijthemerandomizer.startup.MyProjectActivity" />
+        <applicationConfigurable
+                parentId="tools"
+                instance="com.github.xtina.intellijthemerandomizer.settings.AppSettingsConfigurable"
+                id="com.github.xtina.intellijthemerandomizer.settings.AppSettingsConfigurable"
+                displayName="Theme Randomizer"/>
+        <applicationService
+                serviceImplementation="com.github.xtina.intellijthemerandomizer.settings.AppSettings"/>
     </extensions>
 </idea-plugin>
