@@ -1,4 +1,3 @@
-@file:Suppress("UnstableApiUsage")
 
 package com.github.xtina.intellijthemerandomizer.settings
 
@@ -10,13 +9,12 @@ import com.intellij.ide.ui.search.SearchUtil
 import com.intellij.openapi.actionSystem.ActionManager
 import com.intellij.openapi.actionSystem.DefaultActionGroup
 import com.intellij.openapi.application.ApplicationManager
-import com.intellij.packageDependencies.ui.TreeExpansionMonitor
 import com.intellij.ui.CheckboxTree
 import com.intellij.ui.CheckedTreeNode
-import com.intellij.ui.FilterComponent
 import com.intellij.ui.ScrollPaneFactory
 import com.intellij.ui.SimpleTextAttributes
 import com.intellij.ui.components.JBCheckBox
+import com.intellij.ui.components.JBTextField
 import com.intellij.util.ui.JBUI
 import com.intellij.util.ui.UIUtil
 import com.intellij.util.ui.tree.TreeUtil
@@ -44,9 +42,10 @@ class PreferredLAFTree(
     private val themeCheckStatus: MutableMap<String, Boolean> = HashMap()
     val component: JComponent = JPanel(BorderLayout())
     private val myTree: CheckboxTree = createTree()
-    private val myFilter: FilterComponent = MyFilterComponent()
+    private val myFilter: JBTextField = JBTextField()
     private val toolbarPanel: JPanel = JPanel(BorderLayout())
     private val myToggleAll = JBCheckBox()
+    private val expandedPaths: MutableList<Any> = mutableListOf()
 
     init {
         initTree()
@@ -54,8 +53,16 @@ class PreferredLAFTree(
 
     private fun initTree() {
         val scrollPane = ScrollPaneFactory.createScrollPane(myTree)
+        myFilter.text = ""
         toolbarPanel.add(myFilter, BorderLayout.CENTER)
         toolbarPanel.border = JBUI.Borders.emptyBottom(2)
+
+        // Add document listener for filtering
+        myFilter.document.addDocumentListener(object : javax.swing.event.DocumentListener {
+            override fun insertUpdate(e: javax.swing.event.DocumentEvent?) = performFiltering()
+            override fun removeUpdate(e: javax.swing.event.DocumentEvent?) = performFiltering()
+            override fun changedUpdate(e: javax.swing.event.DocumentEvent?) = performFiltering()
+        })
 
         val group = DefaultActionGroup()
         val actionManager = CommonActionsManager.getInstance()
@@ -84,15 +91,18 @@ class PreferredLAFTree(
         component.add(toolbarPanel, BorderLayout.NORTH)
         component.add(scrollPane, BorderLayout.CENTER)
 
-        if (EventQueue.isDispatchThread()) {
-            myFilter.reset()
-        }
-
         reset(copyAndSort(getThemeList()))
         myToggleAll.isSelected = getAllNodes()
             .map { it.isChecked }
             .reduce { a, b -> a && b }
             .orElse(false)
+    }
+
+    private fun performFiltering() {
+        val filter = myFilter.text
+        val filtered = filterModel(filter, true)
+        refreshCheckStatus(myTree.model.root as CheckedTreeNode)
+        reset(copyAndSort(filtered))
     }
 
     private fun createTree() = CheckboxTree(
@@ -118,7 +128,7 @@ class PreferredLAFTree(
 
                 UIUtil.changeBackGround(this, background)
                 SearchUtil.appendFragments(
-                    myFilter.filter,
+                    myFilter.text,
                     text,
                     attributes.style,
                     attributes.fgColor,
@@ -193,7 +203,7 @@ class PreferredLAFTree(
         get() = isModified(root, selectionPredicate)
 
     fun dispose() {
-        myFilter.dispose()
+        // JBTextField doesn't need explicit disposal
     }
 
     private fun getAllNodes(): Stream<CheckedTreeNode> {
@@ -202,49 +212,8 @@ class PreferredLAFTree(
         return bob.build()
     }
 
-    private inner class MyFilterComponent : FilterComponent("THEME_FILTER_HISTORY", HISTORY_LENGTH) {
-        private val myExpansionMonitor = TreeExpansionMonitor.install(myTree)
-
-        override fun filter() {
-            val filter = filter
-            if (!filter.isNullOrEmpty() && !myExpansionMonitor.isFreeze) {
-                myExpansionMonitor.freeze()
-            }
-            this@PreferredLAFTree.filter(filterModel(filter, true))
-            val expandedPaths = TreeUtil.collectExpandedPaths(myTree)
-
-            (myTree.model as DefaultTreeModel).reload()
-            TreeUtil.restoreExpandedPaths(myTree, expandedPaths)
-
-            SwingUtilities.invokeLater {
-                myTree.setSelectionRow(0)
-            }
-
-            TreeUtil.expandAll(myTree)
-
-            if (filter.isNullOrEmpty()) {
-                TreeUtil.collapseAll(myTree, 0)
-                myExpansionMonitor.restore()
-            }
-        }
-
-        override fun onlineFilter() {
-            val filter = filter
-            if (!filter.isNullOrEmpty() && !myExpansionMonitor.isFreeze) {
-                myExpansionMonitor.freeze()
-            }
-
-            this@PreferredLAFTree.filter(filterModel(filter, true))
-            TreeUtil.expandAll(myTree)
-            if (filter.isNullOrEmpty()) {
-                TreeUtil.collapseAll(myTree, 0)
-                myExpansionMonitor.restore()
-            }
-        }
-    }
 
     companion object {
-        private const val HISTORY_LENGTH = 10
 
         private fun copyAndSort(data: List<ThemeGroupData>): List<ThemeGroupData> =
             data.sortedBy { it.name }
