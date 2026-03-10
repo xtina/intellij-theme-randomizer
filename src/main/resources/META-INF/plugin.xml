@@ -20,4 +20,13 @@
         <applicationService
                 serviceImplementation="com.github.xtina.intellijthemerandomizer.settings.ThemeGatekeeper"/>
     </extensions>
+
+    <actions>
+        <action id="ThemeRandomizer.RandomizeTheme"
+                class="com.github.xtina.intellijthemerandomizer.actions.RandomizeThemeAction"
+                text="Randomize Theme"
+                description="Switch to a random theme from your preferred list">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+        </action>
+    </actions>
 </idea-plugin>
