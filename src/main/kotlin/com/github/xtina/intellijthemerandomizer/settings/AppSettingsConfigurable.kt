@@ -1,4 +1,3 @@
-@file:Suppress("UnstableApiUsage")
 
 package com.github.xtina.intellijthemerandomizer.settings
 
