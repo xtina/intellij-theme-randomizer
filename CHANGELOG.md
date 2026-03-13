@@ -4,9 +4,9 @@
 
 ## [Unreleased]
 
-### Fixed
+## [1.1.1] - 2026-03-13
 
-- Fixed timers
+- Bump org.jetbrains.intellij.platform from 2.12.0 to 2.13.0 by @dependabot[bot] in https://github.com/xtina/intellij-theme-randomizer/pull/14
 
 ## [1.1.0]
 
@@ -20,3 +20,8 @@
 - Plugin icon
 - Initial scaffold created
   from [IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template)
+
+[Unreleased]: https://github.com/xtina/intellij-theme-randomizer/compare/v1.1.1...HEAD
+[1.1.1]: https://github.com/xtina/intellij-theme-randomizer/compare/v1.1.0...v1.1.1
+[1.1.0]: https://github.com/xtina/intellij-theme-randomizer/compare/v1.0.0...v1.1.0
+[1.0.0]: https://github.com/xtina/intellij-theme-randomizer/commits/v1.0.0
