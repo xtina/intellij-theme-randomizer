@@ -23,6 +23,7 @@ class AppSettings : PersistentStateComponent<AppSettings> {
     var changeOnSystemSwitches: Int = 1
     var isLocalSync: Boolean = false
     var isTimedMatchOS: Boolean = false
+    var lastRandomizedMillis: Long = 0L
 
     override fun getState(): AppSettings = this
 

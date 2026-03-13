@@ -2,6 +2,7 @@
 package com.github.xtina.intellijthemerandomizer.settings
 
 import com.github.xtina.intellijthemerandomizer.MyBundle
+import com.github.xtina.intellijthemerandomizer.startup.ThemeSchedulerService
 import com.intellij.openapi.options.SearchableConfigurable
 import com.intellij.openapi.project.DumbAware
 import com.intellij.util.ui.JBUI
@@ -243,6 +244,8 @@ class AppSettingsConfigurable : SearchableConfigurable, DumbAware {
         savedChangeOnSystemSwitches = settings.changeOnSystemSwitches
         savedIsLocalSync = settings.isLocalSync
         savedIsTimedMatchOS = settings.isTimedMatchOS
+
+        ThemeSchedulerService.instance.reschedule()
     }
 
     override fun reset() {

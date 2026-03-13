@@ -19,6 +19,8 @@
                 serviceImplementation="com.github.xtina.intellijthemerandomizer.settings.AppSettings"/>
         <applicationService
                 serviceImplementation="com.github.xtina.intellijthemerandomizer.settings.ThemeGatekeeper"/>
+        <applicationService
+                serviceImplementation="com.github.xtina.intellijthemerandomizer.startup.ThemeSchedulerService"/>
     </extensions>
 
     <actions>
