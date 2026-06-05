@@ -6,7 +6,7 @@
 
 <!-- Plugin description -->
 
-This is a fork of the ever popular [Theme Randomizer](https://plugins.jetbrains.com/plugin/16107-theme-randomizer) plugin that has been updated to work with the latest Intellij versions.
+This is a fork of the ever popular [Theme Randomizer](https://github.com/Unthrottled/theme-randomizer) plugin that has been updated to work with the latest Intellij versions.
 
 <!-- Plugin description end -->
 ## Installation
