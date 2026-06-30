@@ -4,8 +4,6 @@
 
 ## [Unreleased]
 
-- Dep updates
-
 ## [1.1.2] - 2026-04-03
 
 - Changelog update - `1.1.1` by @github-actions[bot] in https://github.com/xtina/intellij-theme-randomizer/pull/15
