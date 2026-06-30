@@ -4,6 +4,17 @@
 
 ## [Unreleased]
 
+## [1.1.3] - 2026-06-30
+
+- Changelog update - `1.1.2` by @github-actions[bot] in https://github.com/xtina/intellij-theme-randomizer/pull/28
+- Combined PRs by @github-actions[bot] in https://github.com/xtina/intellij-theme-randomizer/pull/46
+- Bump org.jetbrains.qodana from 2025.3.2 to 2026.1.3 by @dependabot[bot] in https://github.com/xtina/intellij-theme-randomizer/pull/40
+- Bump actions/checkout from 5 to 7 by @dependabot[bot] in https://github.com/xtina/intellij-theme-randomizer/pull/42
+- Bump org.jetbrains.intellij.platform from 2.13.1 to 2.17.0 by @dependabot[bot] in https://github.com/xtina/intellij-theme-randomizer/pull/44
+- Combined PRs by @github-actions[bot] in https://github.com/xtina/intellij-theme-randomizer/pull/47
+- Combined PRs by @github-actions[bot] in https://github.com/xtina/intellij-theme-randomizer/pull/48
+- Bump jtalk/url-health-check-action from 4 to 5 by @dependabot[bot] in https://github.com/xtina/intellij-theme-randomizer/pull/21
+
 ## [1.1.2] - 2026-04-03
 
 - Changelog update - `1.1.1` by @github-actions[bot] in https://github.com/xtina/intellij-theme-randomizer/pull/15
@@ -34,7 +45,8 @@
 - Initial scaffold created
   from [IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template)
 
-[Unreleased]: https://github.com/xtina/intellij-theme-randomizer/compare/v1.1.2...HEAD
+[Unreleased]: https://github.com/xtina/intellij-theme-randomizer/compare/v1.1.3...HEAD
+[1.1.3]: https://github.com/xtina/intellij-theme-randomizer/compare/v1.1.2...v1.1.3
 [1.1.2]: https://github.com/xtina/intellij-theme-randomizer/compare/v1.1.1...v1.1.2
 [1.1.1]: https://github.com/xtina/intellij-theme-randomizer/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/xtina/intellij-theme-randomizer/compare/v1.0.0...v1.1.0
