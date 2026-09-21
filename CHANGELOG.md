@@ -4,6 +4,20 @@
 
 ## [Unreleased]
 
+## [1.1.4] - 2026-09-21
+
+- Changelog update - `1.1.3` by @github-actions[bot] in https://github.com/xtina/intellij-theme-randomizer/pull/49
+- Bump org.jetbrains.kotlinx.kover from 0.9.8 to 0.9.9 by @dependabot[bot] in https://github.com/xtina/intellij-theme-randomizer/pull/54
+- Bump org.jetbrains.intellij.platform from 2.17.0 to 2.18.1 by @dependabot[bot] in https://github.com/xtina/intellij-theme-randomizer/pull/51
+- Bump org.jetbrains.kotlin.jvm from 2.4.0 to 2.4.10 by @dependabot[bot] in https://github.com/xtina/intellij-theme-randomizer/pull/52
+- Bump org.jetbrains.intellij.platform from 2.18.1 to 2.19.0 by @dependabot[bot] in https://github.com/xtina/intellij-theme-randomizer/pull/65
+- Combined PRs by @github-actions[bot] in https://github.com/xtina/intellij-theme-randomizer/pull/67
+- Bump gradle-wrapper from 9.6.1 to 9.7.1 by @dependabot[bot] in https://github.com/xtina/intellij-theme-randomizer/pull/60
+- Combined PRs by @github-actions[bot] in https://github.com/xtina/intellij-theme-randomizer/pull/68
+- Bump actions/setup-java from 5 to 6 by @dependabot[bot] in https://github.com/xtina/intellij-theme-randomizer/pull/61
+- Release plugin version to 1.1.4 by @xtina in https://github.com/xtina/intellij-theme-randomizer/pull/69
+- @xtina made their first contribution in https://github.com/xtina/intellij-theme-randomizer/pull/69
+
 ## [1.1.3] - 2026-06-30
 
 - Changelog update - `1.1.2` by @github-actions[bot] in https://github.com/xtina/intellij-theme-randomizer/pull/28
@@ -45,7 +59,8 @@
 - Initial scaffold created
   from [IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template)
 
-[Unreleased]: https://github.com/xtina/intellij-theme-randomizer/compare/v1.1.3...HEAD
+[Unreleased]: https://github.com/xtina/intellij-theme-randomizer/compare/v1.1.4...HEAD
+[1.1.4]: https://github.com/xtina/intellij-theme-randomizer/compare/v1.1.3...v1.1.4
 [1.1.3]: https://github.com/xtina/intellij-theme-randomizer/compare/v1.1.2...v1.1.3
 [1.1.2]: https://github.com/xtina/intellij-theme-randomizer/compare/v1.1.1...v1.1.2
 [1.1.1]: https://github.com/xtina/intellij-theme-randomizer/compare/v1.1.0...v1.1.1
